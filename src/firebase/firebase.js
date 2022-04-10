@@ -5,14 +5,23 @@ import {getDatabase , ref ,child , push} from  "firebase/database";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyCq-UEXRgu1uxj5YdQQPNpdGQynjdApToM",
+//   authDomain: "malnourished--meet.firebaseapp.com",
+//   databaseURL: "https://malnourished--meet-default-rtdb.firebaseio.com",
+//   projectId: "malnourished--meet",
+//   storageBucket: "malnourished--meet.appspot.com",
+//   messagingSenderId: "529985134607",
+//   appId: "1:529985134607:web:e737a1b4a8c6cacbbc437a"
+// };
 const firebaseConfig = {
-  apiKey: "AIzaSyCq-UEXRgu1uxj5YdQQPNpdGQynjdApToM",
-  authDomain: "malnourished--meet.firebaseapp.com",
-  databaseURL: "https://malnourished--meet-default-rtdb.firebaseio.com",
-  projectId: "malnourished--meet",
-  storageBucket: "malnourished--meet.appspot.com",
-  messagingSenderId: "529985134607",
-  appId: "1:529985134607:web:e737a1b4a8c6cacbbc437a"
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DATABASE_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGE_SENDER_ID,
+  appId: process.env.APP_ID
 };
 
 // Initialize Firebase
