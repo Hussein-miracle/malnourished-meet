@@ -1,0 +1,12 @@
+.home{
+    width:100%;
+    &__content{
+        width: 100%;
+        height: 90vh;
+        // background-color: var(--gm-overlay-color--on-theme-background);
+        background-color: #000000de;
+    }
+    &__footer{
+        height: 10vh;
+    }
+}

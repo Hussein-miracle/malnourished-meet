@@ -4,6 +4,8 @@ import { useSelector, useDispatch , connect } from 'react-redux';
 import { onValue , child , push , onDisconnect ,onChildAdded , onChildRemoved} from "firebase/database";
 import {dbRef , connectedRef ,userName } from "./firebase/firebase";
 
+import Home from "./components/home/home.component";
+
 
 import {addMeetJoiner , deleteMeetJoiner , setCurrentUser} from "./redux/user/user.actions";
 // import InputContextProvider,{InputContext} from './context/input-context/input-context';
@@ -13,7 +15,7 @@ function App() {
   const currentUser = useSelector((state) => state.user.currentUser); 
   const meetJoiners = useSelector((state) => state.user.meetJoiners); 
   const dispatch = useDispatch();
-  console.log(currentUser)
+  // console.log(currentUser)
   // const {userName} = useContext(InputContext);
 
   const meetJoinersRef = child(dbRef,"meet-joiners");
@@ -22,36 +24,38 @@ function App() {
 
     onValue(connectedRef, snapshot => {
 
-      console.log(snapshot, "data snap");
+      // console.log(snapshot, "data snap");
 
-      const data = snapshot.val();
+      const connected = snapshot.val();
 
-      console.log(data, "[data]")
+      // console.log(connected, "[connected]")
 
-      if(data === true){
+      if(connected === true){
 
         const joinerData = {
           userName,
           joinerInitialSettings:{
             video:true,
             audio:true,
-            screenAccess:false
+            screen:true,
+            caption:false
           }
         }
 
 
 
 
-        const joinersRef = push(meetJoinersRef,joinerData);
+        const joinerRef = push(meetJoinersRef,joinerData);
+
         
         dispatch(setCurrentUser({
-          [joinersRef.key]:{
+          [joinerRef.key]:{
             ...joinerData
           }
         }))
 
 
-        onDisconnect(joinersRef).remove().catch(err => {
+        onDisconnect(joinerRef).remove().catch(err => {
           if (err) {
             console.error("could not establish onDisconnect event", err);
           }
@@ -65,24 +69,23 @@ function App() {
   useEffect(()=>{
 
     if(currentUser){
-      onChildAdded(meetJoinersRef,snapshot => {
+
+      onChildAdded(meetJoinersRef, (snapshot) => {
+
         const {userName,joinerInitialSettings} = snapshot.val();
 
         dispatch(addMeetJoiner({[snapshot.key]:{userName,...joinerInitialSettings}}))
       })
 
-      onChildRemoved(meetJoinersRef, (snapshot) => {dispatch(deleteMeetJoiner(snapshot.key))
-        })
+
+      onChildRemoved(meetJoinersRef, (snapshot) => {dispatch(deleteMeetJoiner(snapshot.key))})
     }
 
   },[currentUser])
 
   return (
     <div className="App">
-      <h1>Yo  {userName && userName}!</h1>
-      currentUser{JSON.stringify(currentUser)}
-      <br/>
-      joiners{JSON.stringify(meetJoiners)}
+      <Home/>
     </div>
   );
 }

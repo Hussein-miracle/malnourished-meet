@@ -9,6 +9,45 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+    --gm-background-color: #fff;
+    --gm--icon-background-color: #3c4043;
+    --gm-body-text-color: #3c4043;
+    --gm-caption-color: #5f6368;
+    --gm-screen-off-color: #353b48;
+    --gm-error-color-highlight: #fce8e6;
+    --gm-error-color: #c5221f;
+    --gm-disable-color: #ea4335;
+    --gm-hairline-color: #dadce0;
+    --gm-hint-color: #5f6368;
+    --gm-label-color: #5f6368;
+    --gm-navigation-icon-color: #3c4043;
+    --gm-neutral-highlight-color: #f8f9fa;
+    --gm-neutral-outline-color: #dadce0;
+    --gm-overlay-color--on-theme-background: #202124;
+    --gm-secondary-icon-color: var(--gm-label-color);
+    --gm-text-color--on-dark-background: var(--gm-text-color--on-theme-background);
+    --gm-text-color--on-theme-background: #fff;
+    --gm-theme-color--base: #1a73e8;
+    --gm-theme-color--elevation-shadow-1: rgba(26,115,232,0.149);
+    --gm-theme-color--elevation-shadow-2: rgba(26,115,232,0.302);
+    --gm-theme-color--stateful: #174ea6;
+    --gm-theme-color-highlight: #e8f0fe;
+    --gm-theme-color: #1a73e8;
+    --gm-tooltip-background-color: #3c4043;
+    --mdc-theme-primary: var(--gm-theme-color);
+    --gm-fillbutton-container-color: var(--gm-theme-color);
+    --gm-fillbutton-ink-color: var(--gm-text-color--on-theme-background);
+    --gm-fillbutton-state-color: var(--gm-overlay-color--on-theme-background);
+    --gm-fillbutton-ambient-color: var(--gm-theme-color--elevation-shadow-1);
+    --gm-fillbutton-keyshadow-color: var(--gm-theme-color--elevation-shadow-2);
+    --gm-hairlinebutton-outline-color: var(--gm-neutral-outline-color);
+    --gm-hairlinebutton-outline-color--stateful: var(--gm-theme-color--stateful);
+    --gm-hairlinebutton-ink-color: var(--gm-theme-color);
+    --gm-hairlinebutton-ink-color--stateful: var(--gm-theme-color--stateful);
+    --gm-hairlinebutton-state-color: var(--gm-theme-color);
+    --gm-colortextbutton-ink-color: var(--gm-theme-color);
+    --gm-colortextbutton-ink-color--stateful: var(--gm-theme-color--stateful);
+    --gm-colortextbutton-state-color: var(--gm-theme-color);
 }
 
 code {
@@ -19,3 +58,14 @@ code {
 input{
   font-size:1rem;
 }
+
+html,body{
+  height: 100%;
+}
+
+
+svg,img,video,picture,canvas{
+  display: block;
+  max-width: 100%;
+}
+

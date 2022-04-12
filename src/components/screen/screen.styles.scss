@@ -1,0 +1,13 @@
+.screen{
+    background-color: var(--gm-body-text-color);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    // background-color: rgb(151, 151, 18);
+}

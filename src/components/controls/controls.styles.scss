@@ -1,0 +1,72 @@
+.controls{
+    background-color: var(--gm-overlay-color--on-theme-background);
+    height: 100%;
+    display: flex;
+        // flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    &__btn{
+        display: flex;
+        // flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        -ms-border-radius: 50%;
+        -o-border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        margin: 10px;
+        background-color: var(--gm-body-text-color)
+        ;
+        &:focus{
+            outline: none;
+        }
+
+        &.off{
+            background-color:var(--gm-disable-color);
+            .MuiSvgIcon-root,svg{
+                fill: #fff;
+            }
+        }
+        .MuiSvgIcon-root,svg{
+            fill: #fff;
+        }
+
+        &.caption{
+            background-color: rgb(99, 99, 218);
+            box-shadow: 2px 4px 5px rgb(99, 99, 218) ,-2px -4px 5px rgb(99, 99, 218); 
+            .MuiSvgIcon-root,svg{
+                fill: #000;
+            }
+        }
+    }
+    &__btn-call{
+        margin: 10px;
+        display: flex;
+        //flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: none;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        border-bottom-left-radius: 100px;
+        height: 40px;
+        width: 56px;
+        background-color: #ea4335;
+        &:focus{
+            outline: none;
+        }
+
+        .MuiSvgIcon-root,svg{
+            fill: #fff;
+            height: 80%;
+            width: 80%;
+        }
+    }
+}
