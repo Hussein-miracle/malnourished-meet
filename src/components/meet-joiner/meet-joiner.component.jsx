@@ -46,7 +46,7 @@ const MeetJoiner = ({currentIndex,curJoiner,hideVideo,camRef,showPhoto,currentUs
 
         <MicOffIcon title="Muted"  className={`mic-off ${ !curUser?.joinerInitialSettings?.audio ? "hidden" : ""}`}/>
 
-        <div className="photo" style={{
+        <div className={`photo ${ !showPhoto ? "hidden" : ""}`} style={{
           backgroundColor:photoURLColor
         }}>{ showPhoto && userName[0].toUpperCase()}</div>
 

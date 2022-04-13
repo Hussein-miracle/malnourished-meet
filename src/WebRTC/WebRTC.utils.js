@@ -62,7 +62,8 @@ export const initializeListeners = async (userId) => {
 
     if (data?.offer) {
 
-      const pc = store.getState().meetJoiners[data.offer.userId].peerConnection;
+      console.log(data.offer,store.getState().user.meetJoiners , "offer data getState")
+      const pc = store.getState().user.meetJoiners[data.offer.userId].peerConnection;
 
       await pc.setRemoteDescription(new RTCSessionDescription(data.offer));
 
@@ -75,7 +76,7 @@ export const initializeListeners = async (userId) => {
     const data = snapshot.val();
 
     if (data.userId) {
-      const pc = store.getState().meetJoiners[data.userId].peerConnection;
+      const pc = store.getState().user.meetJoiners[data.userId].peerConnection;
 
       pc.addIceCandidate(new RTCIceCandidate(data));
 
@@ -87,7 +88,7 @@ export const initializeListeners = async (userId) => {
     const data = snapshot.val();
 
     if (data?.answer) {
-      const peerConnection = store.getState().meetJoiners[data.answer.userId].peerConnection;
+      const peerConnection = store.getState().user.meetJoiners[data.answer.userId].peerConnection;
 
       const answerDescription = new RTCSessionDescription(data.answer);
 
@@ -101,7 +102,7 @@ export const initializeListeners = async (userId) => {
 
     if (data.userId) {
 
-      const pc = store.getState().meetJoiners[data.userId].peerConnection;
+      const pc = store.getState().user.meetJoiners[data.userId].peerConnection;
 
       pc.addIceCandidate(new RTCIceCandidate(data));
 
@@ -111,7 +112,7 @@ export const initializeListeners = async (userId) => {
 
 const createAnswer = async (otherUserId, userId) => {
 
-  const pc = store.getState().meetJoiners[otherUserId].peerConnection;
+  const pc = store.getState().user.meetJoiners[otherUserId].peerConnection;
 
   const participantRef1 = child(participantRef , otherUserId);
 

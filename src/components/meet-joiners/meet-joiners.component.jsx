@@ -5,9 +5,9 @@ import MeetJoiner from '../meet-joiner/meet-joiner.component';
 const MeetJoiners = () => {
   const videoRef = useRef(null);
   const meetJoiners = useSelector((state) => state.user.meetJoiners);
+  const stream = useSelector((state) => state.user.mainStream);
   const meetJoinersIds = Object.keys(meetJoiners);
 
-  // const stream = useSelector((state) => state.user.mainStream);
 
   const currentUserData = useSelector((state) => state.user.currentUser);
   console.log(currentUserData , "curebuser d")
@@ -18,7 +18,12 @@ const MeetJoiners = () => {
   let gridCol = meetJoinersIds.length <= 4 ? 1 : 2;
   let gridRow = meetJoinersIds.length <= 4 ? meetJoinersIds.length : Math.ceil(meetJoinersIds.length / 2);
 
-  
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.srcObject = stream;
+      videoRef.current.muted = currentUser.audio; 
+    }
+  }, [currentUser,stream]);
 
   
 
@@ -36,8 +41,10 @@ const MeetJoiners = () => {
 
   const joiners = meetJoinersIds.map((meetJoinerId, index) => {
 
+    console.log(index)
+
     const curJoiner = meetJoiners[meetJoinerId];
-    console.log(curJoiner, "joineer")
+    // console.log(curJoiner, "joineer")
     const isCurrentUser = curJoiner.currentUser;
 
     if (isCurrentUser) {
@@ -63,7 +70,7 @@ const MeetJoiners = () => {
         );
 
 
-        if (videElement) videElement.srcObject = remoteStream;
+        if(videElement)videElement.srcObject = remoteStream;
       };
     }
 
@@ -90,13 +97,14 @@ const MeetJoiners = () => {
       "--grid-row":gridRow
     }}> 
 
-      
+      {joiners} 
 
       <MeetJoiner
-        key={meetJoinersIds.length} 
+
+        // key={meetJoinersIds.length} 
+
         curJoiner={currentUser} 
-        currentIndex={meetJoinersIds.length}
-        
+        currentIndex={meetJoinersIds.length - 1}
         hideVideo={findScreenSharer && !currentUser.screen}
 
         showPhoto={ currentUser?.joinerInitialSettings?.video === false && currentUser?.joinerInitialSettings?.screen === false ? true : false }
@@ -105,7 +113,7 @@ const MeetJoiners = () => {
 
         currentUser
       />
-      {joiners} 
+      
     </div>
   )
 }
