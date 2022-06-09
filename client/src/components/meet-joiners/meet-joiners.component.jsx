@@ -10,9 +10,10 @@ const MeetJoiners = () => {
 
 
   const currentUserData = useSelector((state) => state.user.currentUser);
-  console.log(currentUserData , "curebuser d")
+
+  console.log(currentUserData , "current user d")
   const currentUser = currentUserData ? Object.values(currentUserData)[0]    : null;
-  console.log(currentUser ,"[cur user joiners cop=mp]")
+  // console.log(currentUser ,"[cur user meetjoiners component]")
 
 
   let gridCol = meetJoinersIds.length <= 4 ? 1 : 2;
@@ -65,12 +66,12 @@ const MeetJoiners = () => {
         });
 
 
-        const videElement = document.getElementById(
+        const videoElement = document.getElementById(
           `meetJoinerCam${currentIndex}`
         );
 
 
-        if(videElement)videElement.srcObject = remoteStream;
+        if(videoElement) videoElement.srcObject = remoteStream;
       };
     }
 

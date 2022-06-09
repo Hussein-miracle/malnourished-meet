@@ -1,5 +1,5 @@
 import UserActionTypes from "./user.types";
-import {initializeListeners,updatePreference } from "../../WebRTC/WebRTC.utils";
+import {initializeListeners, updateSettings } from "../../WebRTC/WebRTC.utils";
 import { addPerson   , randomColor} from "./user.utils";
 
 const INITIAL_STATE = {
@@ -26,15 +26,21 @@ const userReducer = (state=INITIAL_STATE,action) => {
                 ...state,
                 currentUser:action.payload
             };
-        case UserActionTypes.UPDATE_CURRENT_USER:
-            const Id = Object.keys(state.currentUser)[0];
             
-            updatePreference(Id, action.payload);
+        case UserActionTypes.UPDATE_CURRENT_USER:
+            if(!!state.currentUser){
+                const Id = Object.keys(state.currentUser)[0];
 
-            state.currentUser[Id] = {
-            ...state.currentUser[Id],
-            ...action.payload,
-            };
+                console.log("userId for settings updatae", Id)
+            
+                updateSettings(Id, action.payload);
+
+                state.currentUser[Id] = {
+                ...state.currentUser[Id],
+                ...action.payload,
+                };
+            }
+            
 
             return {
                 ...state,
@@ -42,6 +48,7 @@ const userReducer = (state=INITIAL_STATE,action) => {
             };
 
         case UserActionTypes.SET_MAIN_STREAM:
+            console.log("%c main stream in reducer",{"color" : "deeppink"},action.payload)
             return {
                 ...state,
                 mainStream:action.payload

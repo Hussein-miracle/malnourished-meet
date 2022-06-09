@@ -19,6 +19,8 @@
     "react-tooltip": "^4.2.21",
     "redux": "^4.1.2",
     "redux-logger": "^3.0.6",
+    "sass": "^1.52.1",
+    "socket.io-client": "^4.5.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

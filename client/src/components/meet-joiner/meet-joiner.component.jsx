@@ -6,7 +6,7 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 import Screen from "../screen/screen.component";
 
 const MeetJoiner = ({currentIndex,curJoiner,hideVideo,camRef,showPhoto,currentUser}) => {
-  console.log(curJoiner)
+  console.log(curJoiner,"meetjoiner component")
   const [user ,setUser]= useState(null)
   const [curUser ,setCurUser]= useState(null)
   const currentUserData = useSelector((state) => state.user.currentUser); 
@@ -38,17 +38,17 @@ const MeetJoiner = ({currentIndex,curJoiner,hideVideo,camRef,showPhoto,currentUs
 
       <Screen>
         <video 
-        ref={camRef}
-      
+          ref={camRef}
+          
           id={`meetJoinerCam${currentIndex}`}
         autoPlay  playsInline></video>
 
 
-        <MicOffIcon title="Muted"  className={`mic-off ${ !curUser?.joinerInitialSettings?.audio ? "hidden" : ""}`}/>
+        <MicOffIcon title="Muted"  className={`mic-off ${ curUser?.joinerInitialSettings?.audio === false ? "" : "hidden"}`}/>
 
         <div className={`photo ${ !showPhoto ? "hidden" : ""}`} style={{
           backgroundColor:photoURLColor
-        }}>{ showPhoto && userName[0].toUpperCase()}</div>
+        }}>{ showPhoto === true && userName[0].toUpperCase()}</div>
 
 
         <div className="display-name">

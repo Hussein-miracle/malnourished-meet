@@ -15,8 +15,8 @@ import CallEndIcon from '@mui/icons-material/CallEnd';
  
 const  Controls = ({handleMicClick,handleShareScreenClick,handleCamClick}) => {
   const [streamState, setStreamState] = useState({
-    micOn: !true,
-    camOn: !true,
+    micOn: true,
+    camOn: true,
     screen: false,
     captionOn:false
   });
@@ -35,7 +35,7 @@ const  Controls = ({handleMicClick,handleShareScreenClick,handleCamClick}) => {
 
 
   const handleShareScreen = () => {
-    handleShareScreenClick(setScreenState);
+    handleShareScreenClick();
   };
 
   const setScreenState = (isEnabled) => {

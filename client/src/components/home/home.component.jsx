@@ -32,6 +32,7 @@ const Home = () => {
   }, [meetJoiners]); 
 
   const updateStream = (stream) => {
+    
     for (let key in meetJoinersRef.current) {
 
       const sender = meetJoinersRef.current[key];
@@ -39,8 +40,10 @@ const Home = () => {
       if (sender.currentUser) continue;
 
       const peerConnection = sender.peerConnection.getSenders().find((s) => (s.track ? s.track.kind === "video" : false));
+
       peerConnection.replaceTrack(stream.getVideoTracks()[0]);
     }
+
     dispatch(setMainStream(stream));
 
   };
